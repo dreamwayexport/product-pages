@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PISTOL JB-480 — Product Quotation (USD)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black:#0a0a0a; --dark:#111214; --card:#16181c;
+    --border:#2a2d33; --red:#e8222a; --red-dim:#9e161b;
+    --white:#f0f0ef; --gray:#6b7280; --light:#d1d5db;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;min-height:100vh;}
+
+  /* HEADER */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:64px;}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:4px;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px;}
+  .logo span{color:var(--red);}
+  .back-btn{display:flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--border);color:var(--light);font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;cursor:pointer;transition:all .2s;text-decoration:none;}
+  .back-btn:hover{border-color:var(--red);color:var(--red);}
+
+  /* HERO */
+  .detail-hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px);margin-top:64px;}
+  .detail-gallery{background:var(--dark);border-right:1px solid var(--border);position:sticky;top:64px;height:calc(100vh - 64px);display:flex;flex-direction:column;overflow:hidden;}
+  .main-img-wrap{flex:1;display:flex;align-items:center;justify-content:center;background:#0c0d0f;overflow:hidden;min-height:0;}
+  .main-img-wrap img{width:100%;height:100%;object-fit:contain;transition:opacity .3s;padding:32px;}
+  .thumb-row{display:flex;gap:0;border-top:1px solid var(--border);}
+  .thumb{flex:1;aspect-ratio:1;cursor:pointer;overflow:hidden;border-right:1px solid var(--border);background:#0e0f11;display:flex;align-items:center;justify-content:center;transition:background .2s;padding:8px;}
+  .thumb:last-child{border-right:none;}
+  .thumb img{width:100%;height:100%;object-fit:contain;opacity:0.5;transition:opacity .2s;}
+  .thumb.active img,.thumb:hover img{opacity:1;}
+  .thumb.active{background:#191c21;}
+  .detail-info{background:var(--black);padding:60px 56px;overflow-y:auto;}
+
+  /* INFO */
+  .detail-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:12px;}
+  .detail-model{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);letter-spacing:2px;color:var(--white);line-height:1;margin-bottom:8px;}
+  .detail-subtitle{font-size:15px;color:var(--gray);font-weight:300;margin-bottom:40px;line-height:1.6;}
+
+  /* PRICING */
+  .pricing-block{background:var(--card);border:1px solid var(--border);padding:28px 32px;margin-bottom:36px;}
+  .pricing-block h3{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:3px;color:var(--gray);text-transform:uppercase;margin-bottom:18px;}
+  .price-tiers{display:flex;flex-direction:column;gap:0;}
+  .price-tier{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);}
+  .price-tier:last-child{border-bottom:none;}
+  .tier-qty{font-family:'Barlow Condensed',sans-serif;font-size:14px;letter-spacing:1px;color:var(--gray);}
+  .tier-price{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--white);letter-spacing:1px;}
+  .tier-price.featured{color:var(--red);}
+  .price-note{font-size:11px;color:var(--gray);margin-top:12px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;}
+  .cta-row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
+  .alibaba-link{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:white;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;text-decoration:none;transition:background .2s;}
+  .alibaba-link:hover{background:#c41920;}
+  .quote-link{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--light);font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;text-decoration:none;border:1px solid var(--border);transition:all .2s;}
+  .quote-link:hover{border-color:var(--red);color:var(--red);}
+
+  /* SECTIONS */
+  .section-heading{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:3px;color:var(--gray);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+  .section-heading::after{content:'';flex:1;height:1px;background:var(--border);}
+  .specs-section{margin-bottom:36px;}
+  .specs-table{width:100%;border-collapse:collapse;}
+  .specs-table tr{border-bottom:1px solid var(--border);}
+  .specs-table tr:last-child{border-bottom:none;}
+  .specs-table td{padding:10px 0;font-size:14px;vertical-align:top;}
+  .specs-table td:first-child{color:var(--gray);font-weight:300;width:45%;font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;font-size:13px;}
+  .specs-table td:last-child{color:var(--white);font-weight:500;}
+  .features-list{list-style:none;margin-bottom:36px;}
+  .features-list li{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--light);font-weight:300;}
+  .features-list li:last-child{border-bottom:none;}
+  .features-list li::before{content:'';width:6px;height:6px;background:var(--red);flex-shrink:0;margin-top:5px;}
+
+  /* TERMS */
+  .terms-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:36px;}
+  .term-cell{background:var(--card);padding:14px 18px;}
+  .term-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:2px;color:var(--gray);text-transform:uppercase;margin-bottom:4px;}
+  .term-val{font-size:13px;color:var(--white);font-weight:400;line-height:1.5;}
+
+  /* CONTACT */
+  .contact-cta{border:1px solid var(--red);padding:28px 32px;background:rgba(232,34,42,0.04);margin-bottom:60px;}
+  .contact-cta h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:16px;}
+  .contact-items{display:flex;flex-direction:column;gap:8px;}
+  .contact-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--light);}
+  .contact-item a{color:var(--light);text-decoration:none;}
+  .contact-item a:hover{color:var(--red);}
+  .contact-icon{color:var(--red);font-size:16px;width:20px;text-align:center;}
+
+  /* FOOTER */
+  footer{background:var(--dark);border-top:1px solid var(--border);padding:32px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  .footer-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:4px;color:var(--gray);}
+  .footer-note{font-size:12px;color:var(--gray);}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    header{padding:0 20px;}
+    .detail-hero{grid-template-columns:1fr;}
+    .detail-gallery{position:static;height:auto;min-height:320px;}
+    .main-img-wrap{min-height:280px;}
+    .detail-info{padding:36px 24px;}
+    .terms-grid{grid-template-columns:1fr;}
+    footer{padding:24px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="../usd.html"><span>●</span> PISTOL</a>
+  <a class="back-btn" href="../usd.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    Back to Catalog
+  </a>
+</header>
+
+<div class="detail-hero">
+  <div class="detail-gallery">
+    <div class="main-img-wrap">
+      <img id="mainImg" src="https://s.alicdn.com/@sc04/kf/H9bfafea70ce84232b51173b60a1e9c14t.png_960x960q80.jpg" alt="JB-480">
+    </div>
+    <div class="thumb-row">
+      <div class="thumb active" onclick="setImg('https://s.alicdn.com/@sc04/kf/H9bfafea70ce84232b51173b60a1e9c14t.png_960x960q80.jpg',this)"><img src="https://s.alicdn.com/@sc04/kf/H9bfafea70ce84232b51173b60a1e9c14t.png_960x960q80.jpg" alt="img1"></div><div class="thumb" onclick="setImg('https://s.alicdn.com/@sc04/kf/Hb7d8f1c91ddf4eed9bebb2fb7af879013.png_960x960q80.jpg',this)"><img src="https://s.alicdn.com/@sc04/kf/Hb7d8f1c91ddf4eed9bebb2fb7af879013.png_960x960q80.jpg" alt="img2"></div><div class="thumb" onclick="setImg('https://s.alicdn.com/@sc04/kf/Ae534d2c9abf149ac8193b1fc899080ab1.png_960x960q80.jpg',this)"><img src="https://s.alicdn.com/@sc04/kf/Ae534d2c9abf149ac8193b1fc899080ab1.png_960x960q80.jpg" alt="img3"></div>
+    </div>
+  </div>
+
+  <div class="detail-info">
+    <div class="detail-eyebrow">Class AB · 4-Channel Amplifier</div>
+    <div class="detail-model">JB-480</div>
+    <div class="detail-subtitle">High-power Class AB 4-channel with 650W×4 RMS. Wide voltage 12–24V for demanding installations.</div>
+
+    <div class="pricing-block">
+      <h3>Pricing (USD) · FOB Guangzhou</h3>
+      <div class="price-tiers">
+        <div class="price-tier"><span class="tier-qty">≥ 2 pcs</span><span class="tier-price featured">$27.45</span></div><div class="price-tier"><span class="tier-qty">≥ 10 pcs</span><span class="tier-price">$26.08</span></div><div class="price-tier"><span class="tier-qty">≥ 100 pcs</span><span class="tier-price">$24.71</span></div>
+      </div>
+      <div class="price-note">Price basis: FOB Guangzhou, China · Each (1 pc)</div>
+      <div class="cta-row">
+        <a class="alibaba-link" href="https://www.alibaba.com/product-detail/4000W-Class-AB-4-Channel-Car_1601766762749.html" target="_blank">View on Alibaba ↗</a>
+        <a class="quote-link" href="mailto:miyac@loteintl.cn">Request Quote</a>
+      </div>
+    </div>
+
+    <div class="specs-section">
+      <div class="section-heading">Technical Specifications</div>
+      <table class="specs-table">
+        <tr><td>Brand / Model</td><td>PISTOL / JB-480</td></tr><tr><td>Amplifier Class</td><td>Class AB</td></tr><tr><td>Channels</td><td>4-Channel</td></tr><tr><td>Peak Power</td><td>4000W</td></tr><tr><td>RMS @ 4Ω</td><td>650W × 4</td></tr><tr><td>Bridged Output</td><td>1300W × 2</td></tr><tr><td>Min. Impedance</td><td>4Ω</td></tr><tr><td>Operating Voltage</td><td>12–24V DC</td></tr><tr><td>Frequency Response</td><td>10Hz – 50kHz</td></tr><tr><td>S/N Ratio</td><td>≥ 91dB</td></tr><tr><td>Origin</td><td>Guangdong, China</td></tr>
+      </table>
+    </div>
+
+    <div class="specs-section">
+      <div class="section-heading">Packaging</div>
+      <table class="specs-table">
+        <tr><td>Unit Size</td><td>37 × 24 × 7 cm</td></tr><tr><td>Gross Weight</td><td>3.5 kg</td></tr><tr><td>Sales Unit</td><td>Each (1 pc)</td></tr>
+      </table>
+    </div>
+
+    <div class="section-heading" style="margin-bottom:14px">Key Features</div>
+    <ul class="features-list" style="margin-bottom:36px">
+      <li>Class AB — high efficiency & clear audio</li><li>4-channel independent gain control</li><li>Variable Low Pass Filter + Bass Boost</li><li>4Ω stable, 12–24V wide voltage range</li><li>Die-cast aluminum heatsink chassis</li><li>100% tested before shipment</li>
+    </ul>
+
+    <div class="section-heading" style="margin-bottom:14px">Trade Terms</div>
+    <div class="terms-grid" >
+      <div class="term-cell"><div class="term-label">MOQ</div><div class="term-val">2 pcs</div></div>
+      <div class="term-cell"><div class="term-label">Lead Time</div><div class="term-val">≤ 7 days (≤ 2 pcs)<br>≤ 15 days (≤ 10 pcs)</div></div>
+      <div class="term-cell"><div class="term-label">Packaging</div><div class="term-val">Retail box + outer carton</div></div>
+      <div class="term-cell"><div class="term-label">OEM / ODM</div><div class="term-val">Available</div></div>
+      <div class="term-cell"><div class="term-label">Certifications</div><div class="term-val">CE / RoHS</div></div>
+      <div class="term-cell"><div class="term-label">Trade Assurance</div><div class="term-val">Available via Alibaba</div></div>
+    </div>
+
+    <div class="contact-cta">
+      <h3>Get in Touch</h3>
+      <div class="contact-items">
+        <div class="contact-item"><span class="contact-icon">👤</span> Miya Cheng — Sales Manager</div>
+        <div class="contact-item"><span class="contact-icon">📞</span> <a href="tel:+8613052579868">(+086) 13052579868</a> &nbsp;·&nbsp; WhatsApp</div>
+        <div class="contact-item"><span class="contact-icon">💬</span> WeChat: momomiyacheng</div>
+        <div class="contact-item"><span class="contact-icon">✉</span> <a href="mailto:miyac@loteintl.cn">miyac@loteintl.cn</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">PISTOL</div>
+  <div class="footer-note">Guangzhou Xinming Auto Supplies Co., Ltd. · CE / RoHS · OEM/ODM Available</div>
+</footer>
+
+<script>
+function setImg(src, el) {
+  document.getElementById('mainImg').src = src;
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
